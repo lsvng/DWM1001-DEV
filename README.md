@@ -47,4 +47,3 @@ This project contains C++ examples that demonstrate how to interface with the DW
 
 ~< name >/nominal_update_rate (int, default: 100)
 * The nominal update rate of the DMW1001 module.
-# DWM1001-DEV
