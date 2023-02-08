@@ -1,0 +1,28 @@
+image: docker
+services:
+  - "docker:dind"
+
+stages:
+  - build
+
+before_script:
+  - if [ "${CI_COMMIT_REF_NAME}" == "master" ]; then
+      IMG_NAME="$CI_REGISTRY_IMAGE:${ARCH_TAG}";
+    else
+      IMG_NAME="$CI_REGISTRY_IMAGE/${CI_COMMIT_REF_NAME}:${ARCH_TAG}";
+    fi
+  - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+
+.docker_build_script: &docker_build_script
+  - docker build -t $IMG_NAME -f $DOCKERFILE .
+  - docker push $IMG_NAME
+
+# Build docker image for arm64v8 architecture
+docker_arm32v7:
+  stage: build
+  variables:
+    ARCH_TAG: "arm32v7"
+    DOCKERFILE: "Dockerfile"
+  script:
+    - *docker_build_script
+    

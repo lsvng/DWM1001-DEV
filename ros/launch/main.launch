@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="device" default="/dev/ttyACM0" />
+  <arg name="nominal_update_rate" default="100" />
+
+  <!-- Launch main node. -->
+  <node pkg="dwm1001_dev_ros" type="dwm1001_dev_ros" name="dwm1001_dev_ros" output="screen" >
+    <param name="device" value="$(arg device)" />
+    <param name="nominal_update_rate" type="int" value="$(arg nominal_update_rate)" />
+  </node>
+
+</launch>
