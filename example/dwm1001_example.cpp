@@ -11,6 +11,8 @@
 #include <iostream>
 #include <signal.h>
 
+using namespace sensor;
+
 // Signal handler callback function
 volatile sig_atomic_t done = 0;
 void sig_handler(int signum) 

@@ -10,6 +10,8 @@
 #include <thread>
 #include <memory>
 
+using namespace sensor;
+
 int main(int argc, char ** argv)
 {
   ros::init(argc, argv, "dwm1001_ros");

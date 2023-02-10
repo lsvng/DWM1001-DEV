@@ -18,7 +18,8 @@ catkin_package(
 )
 
 include_directories(include 
-  ../include/
+  ../include
+  ../utilities
   ${catkin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
 )
@@ -26,6 +27,7 @@ include_directories(include
 add_executable(${PROJECT_NAME}
   src/dwm1001_ros.cpp
   src/dwm1001_ros_main.cpp
+  ../src/uart.cpp
   ../src/dwm1001.cpp
   ../src/kalman_filter.cpp
 )

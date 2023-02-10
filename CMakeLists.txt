@@ -10,12 +10,14 @@ find_package(Eigen3 REQUIRED)
 # Build
 include_directories(
   include
+  utilities
   ${EIGEN3_INCLUDE_DIR}
 )
 
 add_library(dwm1001_dev_lib SHARED
   src/dwm1001.cpp
   src/kalman_filter.cpp
+  src/uart.cpp
 )
 
 target_link_libraries(dwm1001_dev_lib Eigen3::Eigen)
